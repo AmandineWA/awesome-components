@@ -1,6 +1,6 @@
 import { Comment } from "../../core/models/comment.model";
 
-export class PostModel {
+export class Post {
   id!: number;
   userId!: number;
   title!: string;
