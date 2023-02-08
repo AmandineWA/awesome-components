@@ -10,6 +10,8 @@ import {PostsService} from "../../services/posts.service";
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit{
+  // component container/smart
+// doit contenir la logique
 
   posts$!: Observable<Post[]>;
 

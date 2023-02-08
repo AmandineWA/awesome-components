@@ -7,6 +7,8 @@ import {Post} from "../../models/post.model";
   styleUrls: ['./post-list-item.component.scss']
 })
 export class PostListItemComponent implements OnInit{
+// component présentateur/done
+// ne doit pas contenir de logique
 
   @Input() post!: Post;
   @Output() postCommented = new EventEmitter<{comment:string, postId: number}>()
