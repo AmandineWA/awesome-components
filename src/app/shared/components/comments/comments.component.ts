@@ -1,11 +1,32 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Comment} from "../../../core/models/comment.model";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss']
+  styleUrls: ['./comments.component.scss'],
+  animations: [
+    trigger('listItem', [
+      state('default', style({
+        transform: 'scale(1)',
+        'background-color': 'white',
+        'z-index':1
+      })),
+      state('active', style({
+        transform: 'scale(1.05)',
+        'background-color': 'rgb(201,157,242)',
+        'z-index': 2
+      })),
+      transition('default => active', [
+        animate('100ms ease-in-out')
+      ]),
+      transition('default <= active', [
+        animate('500ms ease-in-out')
+      ])
+    ])
+  ]
 })
 export class CommentsComponent implements OnInit {
 
@@ -13,6 +34,7 @@ export class CommentsComponent implements OnInit {
   @Output() newComment = new EventEmitter<string>();
 
   commentCtrl!: FormControl;
+  listItemAnimationState: 'default' | 'active' = 'default';
 
   constructor( private formBuilder: FormBuilder) {}
 
